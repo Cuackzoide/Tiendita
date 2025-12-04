@@ -94,9 +94,9 @@ const products = [
 
 //Elementos HTML
 const productsSection = document.getElementById("products-section");
-const saleSection = document.getElementById("sale-section");
-const closeBtn = document.getElementById("close-modal");
 const dialog = document.getElementById("modal");
+const closeBtn = document.getElementById("close-modal");
+const saleSection = document.getElementById("sale-section");
 const navbarLinks = document.getElementById("navbar-links");
 const navbarBrand = document.querySelector(".navbar-brand");
 
@@ -107,6 +107,7 @@ function showProducts(productsArray, elementHTML, callback) {
     elementHTML.innerHTML += callback(product);
   });
 }
+
 function randomProducts(productsArray) {
   const randomProducts = [];
   const numberOfProducts = 5;
@@ -172,25 +173,27 @@ showProducts(
         </div>
         </div>`
 );
+
 showProducts(
   discountedProducts,
   saleSection,
-  (product) => `<div class="col card">
-  <img src="${product.imagen}" class="card-img-top" alt="${product.nombre}">
-      <div class="card-body">
+  (product) => `
+  <div class="col card">
+    <img src="${product.imagen}" class="card-img-top" alt="${product.nombre}">
+    <div class="card-body">
       <h5 class="card-title">${product.nombre}</h5>
-      </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Descuento: <b>${
-              product.descuento
-            }%</b></li>
-            <li class="list-group-item">Precio Original: <s>$${product.precioOriginal.toLocaleString()}</s></li>
+    </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Descuento: <b>${product.descuento}%</b></li>
+        <li class="list-group-item">Precio Original: <s>$${product.precioOriginal.toLocaleString()}</s></li>
         </ul>
         <div class="card-body">
         <a href="#" class="card-link price-link">$${product.precio.toLocaleString()}</a>
-        </div>
-        </div>`
+    </div>
+  </div>`
 );
+
+// Events listeners
 navbarBrand.addEventListener("click", (e) => {
   e.preventDefault();
   showProducts(
@@ -207,39 +210,32 @@ navbarBrand.addEventListener("click", (e) => {
       <div class="card-body">
       <a href="#" class="card-link category-link">${product.categoria}</a>
         <a href="#" class="card-link price-link">$${product.precio.toLocaleString()}</a>
-      </div>
-      </div>`
+        </div>
+        </div>`
   );
 });
+
 navbarLinks.addEventListener("click", (e) => {
   e.preventDefault();
   showProducts(products, productsSection, (product) => {
     if (product.categoria === e.target.innerHTML) {
       return `<div class="col card">
-            <img src="${product.imagen}" class="card-img-top" alt="${
+          <img src="${product.imagen}" class="card-img-top" alt="${
         product.nombre
       }">
-            <div class="card-body">
-            <h5 class="card-title">${product.nombre}</h5>
-            </div>
-        <ul class="list-group list-group-flush">
-        <li class="list-group-item">${product.descripcion}</li>
-        </ul>
-        <div class="card-body">
-        <a href="#" class="card-link category-link">${product.categoria}</a>
-        <a href="#" class="card-link price-link">$${product.precio.toLocaleString()}</a>
-        </div>
-    </div>`;
+          <div class="card-body">
+          <h5 class="card-title">${product.nombre}</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+          <li class="list-group-item">${product.descripcion}</li>
+          </ul>
+          <div class="card-body">
+          <a href="#" class="card-link category-link">${product.categoria}</a>
+          <a href="#" class="card-link price-link">$${product.precio.toLocaleString()}</a>
+          </div>
+          </div>`;
     }
     return "";
-  });
-});
-
-// Mostrar diálogo al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-  dialog.showModal();
-  closeBtn.addEventListener("click", () => {
-    dialog.close();
   });
 });
 
@@ -252,24 +248,32 @@ productsSection.addEventListener("click", (e) => {
     showProducts(products, productsSection, (product) => {
       if (product.categoria === e.target.innerHTML) {
         return `<div class="col card">
-            <img src="${product.imagen}" class="card-img-top" alt="${
+                <img src="${product.imagen}" class="card-img-top" alt="${
           product.nombre
         }">
-            <div class="card-body">
-              <h5 class="card-title">${product.nombre}</h5>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">${product.descripcion}</li>
-            </ul>
-            <div class="card-body">
-              <a href="#" class="card-link category-link">${
-                product.categoria
-              }</a>
-        <a href="#" class="card-link price-link">$${product.precio.toLocaleString()}</a>
-            </div>
-        </div>`;
+                <div class="card-body">
+                  <h5 class="card-title">${product.nombre}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">${product.descripcion}</li>
+                </ul>
+                <div class="card-body">
+                  <a href="#" class="card-link category-link">${
+                    product.categoria
+                  }</a>
+            <a href="#" class="card-link price-link">$${product.precio.toLocaleString()}</a>
+                </div>
+            </div>`;
       }
       return "";
     });
   }
+});
+
+// Mostrar diálogo al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+  dialog.showModal();
+  closeBtn.addEventListener("click", () => {
+    dialog.close();
+  });
 });
