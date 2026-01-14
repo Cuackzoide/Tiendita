@@ -1,4 +1,4 @@
-// Array con 10 productos
+// Array con 10 productos de ejemplo
 const products = [
   {
     id: 1,
@@ -159,7 +159,8 @@ showProducts(
 showProducts(
   products,
   productsSection,
-  (product) => `<div class="col card">
+  (product) => `<div class="col">
+  <div class="card">
       <img src="${product.imagen}" class="card-img-top" alt="${product.nombre}">
       <div class="card-body">
         <h5 class="card-title">${product.nombre}</h5>
@@ -171,6 +172,7 @@ showProducts(
         <a href="#" class="card-link category-link">${product.categoria}</a>
         <a href="#" class="card-link price-link">$${product.precio.toLocaleString()}</a>
         </div>
+        </div>
         </div>`
 );
 
@@ -178,7 +180,8 @@ showProducts(
   discountedProducts,
   saleSection,
   (product) => `
-  <div class="col card">
+  <div class="col">
+  <div class="card">
     <img src="${product.imagen}" class="card-img-top" alt="${product.nombre}">
     <div class="card-body">
       <h5 class="card-title">${product.nombre}</h5>
@@ -190,6 +193,7 @@ showProducts(
         <div class="card-body">
         <a href="#" class="card-link price-link">$${product.precio.toLocaleString()}</a>
     </div>
+    </div>
   </div>`
 );
 
@@ -199,7 +203,8 @@ navbarBrand.addEventListener("click", (e) => {
   showProducts(
     products,
     productsSection,
-    (product) => `<div class="col card">
+    (product) => `<div class="col">
+    <div class="card">
       <img src="${product.imagen}" class="card-img-top" alt="${product.nombre}">
       <div class="card-body">
       <h5 class="card-title">${product.nombre}</h5>
@@ -211,6 +216,7 @@ navbarBrand.addEventListener("click", (e) => {
       <a href="#" class="card-link category-link">${product.categoria}</a>
         <a href="#" class="card-link price-link">$${product.precio.toLocaleString()}</a>
         </div>
+        </div>
         </div>`
   );
 });
@@ -219,7 +225,8 @@ navbarLinks.addEventListener("click", (e) => {
   e.preventDefault();
   showProducts(products, productsSection, (product) => {
     if (product.categoria === e.target.innerHTML) {
-      return `<div class="col card">
+      return `<div class="col">
+      <div class="card">
           <img src="${product.imagen}" class="card-img-top" alt="${
         product.nombre
       }">
@@ -232,6 +239,7 @@ navbarLinks.addEventListener("click", (e) => {
           <div class="card-body">
           <a href="#" class="card-link category-link">${product.categoria}</a>
           <a href="#" class="card-link price-link">$${product.precio.toLocaleString()}</a>
+          </div>
           </div>
           </div>`;
     }
@@ -247,7 +255,8 @@ productsSection.addEventListener("click", (e) => {
     e.preventDefault();
     showProducts(products, productsSection, (product) => {
       if (product.categoria === e.target.innerHTML) {
-        return `<div class="col card">
+        return `<div class="col">
+                <div class="card">
                 <img src="${product.imagen}" class="card-img-top" alt="${
           product.nombre
         }">
@@ -262,6 +271,7 @@ productsSection.addEventListener("click", (e) => {
                     product.categoria
                   }</a>
             <a href="#" class="card-link price-link">$${product.precio.toLocaleString()}</a>
+                </div>
                 </div>
             </div>`;
       }
