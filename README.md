@@ -19,10 +19,10 @@ Este proyecto se enfoca en la gestión dinámica de productos y sus vistas.
 
 ## 📂 Estructura
 
-- `index.html`: Estructura del contenido.
+- index.html`: Estructura del contenido.
 - **assets/**:
-  - **CSS/**: Estilos globales y componentes.
-  - **JS/**: Lógica del carrito y gestión de inventario.
+  |- **CSS/**: Estilos globales y de componentes.
+  |- **JS/**: Gestión de productos, categorías y renderizado.
 
 ## 🖋️ Autor
 
